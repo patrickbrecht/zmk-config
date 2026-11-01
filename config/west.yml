@@ -4,13 +4,14 @@ manifest:
   remotes:
     - name: zmkfirmware
       url-base: https://github.com/zmkfirmware
+    - name: niceview_repo
+      url-base: https://github.com
   projects:
     - name: zmk
       remote: zmkfirmware
       import: app/west.yml
-    # Fixed: Uses direct 'url' instead of a mapped 'remote' base
     - name: zmk-nice-view-behavior
-      url: https://github.com
+      remote: niceview_repo
       revision: main
   self:
     path: config
