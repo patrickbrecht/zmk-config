@@ -4,13 +4,14 @@ manifest:
   remotes:
     - name: zmkfirmware
       url-base: https://github.com/zmkfirmware
+    - name: interphased_remote
+      url-base: https://github.com
   projects:
     - name: zmk
       remote: zmkfirmware
       import: app/west.yml
     - name: zmk-nice-view-behavior
-      remote: zmkfirmware
-      repo-path: Interphased/zmk-nice-view-behavior
+      remote: interphased_remote
       revision: main
   self:
     path: config
