@@ -4,16 +4,13 @@ manifest:
   remotes:
     - name: zmkfirmware
       url-base: https://github.com/zmkfirmware
-    # 1. Added the remote base for the display module
-    - name: interphased
-      url-base: https://github.com
   projects:
     - name: zmk
       remote: zmkfirmware
       import: app/west.yml
-    # 2. Added the display driver project mapping
+    # Fixed: Uses direct 'url' instead of a mapped 'remote' base
     - name: zmk-nice-view-behavior
-      remote: interphased
+      url: https://github.com
       revision: main
   self:
     path: config
