@@ -19,10 +19,10 @@
 #
 ---
 include:
-  - board: nice_nano_v2//zmk        # or nice_nano_v2 if you're on v0.3
+  - board: nice_nano_v2        # or nice_nano_v2 if you're on v0.3
     shield: corne_left nice_view
     cmake-args: -DCONFIG_ZMK_STUDIO=y -DSNIPPET=studio-rpc-usb-uart
-  - board: nice_nano_v2//zmk
+  - board: nice_nano_v2
     shield: corne_right nice_view
   - board: nice_nano_v2//zmk
     shield: settings_reset
