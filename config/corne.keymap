@@ -46,6 +46,14 @@
             bindings = <&kp DE_O>, <&kp DE_O_UMLAUT>;
         };
 
+        /* Double tap q = @ (AltGr + Q on a German layout) */
+        td_q: tap_dance_q {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <150>;
+            bindings = <&kp DE_Q>, <&kp RA(Q)>;
+        };
+
         td_u: tap_dance_u {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
@@ -60,10 +68,10 @@
         base_layer {
             label = "BASE";
             bindings = <
-&kp TAB     &kp DE_Q  &kp DE_W  &kp DE_E  &kp DE_R  &kp DE_T      &kp DE_Z  &td_u     &kp DE_I      &td_o             &kp DE_P          &kp BSPC
+&kp TAB     &td_q     &kp DE_W  &kp DE_E  &kp DE_R  &kp DE_T      &kp DE_Z  &td_u     &kp DE_I      &td_o             &kp DE_P          &kp ESC
 &kp LCTRL   &td_a     &kp DE_S  &kp DE_D  &kp DE_F  &kp DE_G      &kp DE_H  &kp DE_J  &kp DE_K      &kp DE_L          &kp DE_SZ         &kp ESC
-&kp LSHFT   &kp DE_Y  &kp DE_X  &kp DE_C  &kp DE_V  &kp DE_B      &kp DE_N  &kp DE_M  &kp COMMA     &kp DOT           &kp FSLH          &kp RSHFT
-                              &kp LGUI  &mo LOWER  &kp SPACE      &kp RET   &mo RAISE &kp BSPC
+&kp LSHFT   &kp DE_Y  &kp DE_X  &kp DE_C  &kp DE_V  &kp DE_B      &kp DE_N  &kp DE_M  &kp COMMA     &kp DOT           &kp FSLH          &kp RAISE
+                              &kp LGUI  &mo SPACE  &kp LOWER      &kp RET   &mo BSPC &kp BSPC
             >;
         };
 
