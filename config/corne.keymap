@@ -1,4 +1,4 @@
-/*
+j/*
  * German (QWERTZ) keymap for a 42-key Corne, ZMK v0.3
  *
  * Requirements:
@@ -60,6 +60,91 @@
             tapping-term-ms = <150>;
             bindings = <&kp DE_U>, <&kp DE_U_UMLAUT>;
         };
+
+        td_sl: tap_dance_sl {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <150>;
+            bindings = <&kp RA(MINUS)>, <&kp LS(N7)>;
+        };
+
+        td_cm: tap_dance_cm {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <150>;
+            bindings = <&kp COMMA>, <&kp LS(COMMA)>;
+        };
+
+        td_dot: tap_dance_dot {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <150>;
+            bindings = <&kp DOT>, <&kp LS(DOT)>;
+        };
+
+        td_apos: tap_dance_apos {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <150>;
+            bindings = <&kp LS(NUHS)>, <&kp LS(N2)>;
+        };
+
+        td_hyph: tap_dance_hyph {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <150>;
+            bindings = <&kp FSLH>, <&kp LS(FSLH))>;
+        };
+
+        td_eur: tap_dance_eur {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <150>;
+            bindings = <&kp DE_E>, <&kp RA(E))>;
+        };
+
+        td_sz: tap_dance_sz {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <150>;
+            bindings = <&kp DE_S>, <&kp DE_SZ)>;
+        };
+
+        td_eq: tap_dance_eq {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <150>;
+            bindings = <&kp LS(N0)>, <&kp RA(RBKT)>;        /* =  ~  */
+        };
+
+        td_dollar: tap_dance_dollar {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <150>;
+            bindings = <&kp LS(N4)>, <&kp LS(N3)>;          /* $  §  */
+        };
+
+        td_lt: tap_dance_lt {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <150>;
+            bindings = <&kp NUBS>, <&kp LS(NUBS)>;          /* <  >  */
+        };
+
+        td_caret: tap_dance_caret {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <150>;
+            bindings = <&kp GRAVE>, <&kp RA(RBKT)>;         /* ^  ~  (^ is a dead key) */
+        };
+
+        td_grave: tap_dance_grave {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <150>;
+            bindings = <&kp LS(EQUAL)>, <&kp EQUAL>;        /* `  ´  (dead keys) */
+        };
+
     };
 
     keymap {
@@ -68,40 +153,33 @@
         base_layer {
             label = "BASE";
             bindings = <
-&kp TAB     &td_q     &kp DE_W  &kp DE_E  &kp DE_R  &kp DE_T      &kp DE_Z  &td_u     &kp DE_I      &td_o             &kp DE_P          &kp ESC
-&kp LCTRL   &td_a     &kp DE_S  &kp DE_D  &kp DE_F  &kp DE_G      &kp DE_H  &kp DE_J  &kp DE_K      &kp DE_L          &kp DE_SZ         &kp ESC
-&kp LSHFT   &kp DE_Y  &kp DE_X  &kp DE_C  &kp DE_V  &kp DE_B      &kp DE_N  &kp DE_M  &kp COMMA     &kp DOT           &kp FSLH          &mo RAISE
-                              &kp LGUI  &kp SPACE  &mo LOWER      &kp RET   &mo BSPC &kp BSPC
+&kp ESC     &td_q     &kp DE_W  &td_eur   &kp DE_R  &kp DE_T      &kp td_sl  &td_u     &kp DE_I      &td_o       &kp DE_P    &kp ESC
+&kp LCTRL   &td_a     &td_sz    &kp DE_D  &kp DE_F  &kp DE_G      &kp td_cm  &kp DE_H  &kp DE_J      &kp DE_K    &kp L       &kp ESC
+&kp LSHFT   &kp DE_Y  &kp DE_X  &kp DE_C  &kp DE_V  &kp DE_B      &kp td_apos  &kp DE_N  &kp DE_M    &td_hyph    &kp td_dot  &to RAISE
+                              &kp LGUI  &kp SPACE  &mo LOWER      &kp RET   &kp BSPC  &mo ADJUST
             >;
         };
 
         lower_layer {
-            label = "LOWER";
+            label = "BrdSys";
             bindings = <
-&kp ESC     &kp DE_N1  &kp DE_N2  &kp DE_N3  &kp DE_N4  &kp DE_N5      &kp DE_N6  &kp DE_N7  &kp DE_N8  &kp DE_N9  &kp DE_N0  &kp BSPC
-&trans      &none      &none      &none      &none      &none         &kp LEFT   &kp DOWN   &kp UP     &kp RIGHT  &none      &none
-&trans      &none      &none      &none      &none      &none         &kp HOME   &kp PG_DN  &kp PG_UP  &kp END    &none      &trans
-                                  &trans     &trans     &trans        &kp DEL    &trans     &trans
+&trans      &kp DE_N1  &kp DE_N2  &kp DE_N3  &kp DE_N4  &kp DE_N5      &kp DE_N6     &kp DE_N7  &kp DE_N8  &kp DE_N9  &kp DE_N0  &kp DEL
+&trans      &none      &kp C_VOL_DN    &kp C_VOL_UP    &kp C_MUTE      &none         &kp LEFT   &kp LEFT   &kp DOWN   &kp UP     &kp RIGHT    &none
+&trans      &none      &kp C_PREV      &kp C_NEXT      &kp C_STOP      &kp C_PLAY    &kp td_cm  &kp HOME   &kp PG_DN  &kp PG_UP  &kp END      &trans
+                                &kp LGUI     &kp SPACE     &trans      &RET    &kp BPSC     &mo ADJUST
             >;
         };
 
         raise_layer {
-            label = "RAISE";
+            label = "SymNum";
             bindings = <
-&trans      &kp EXCL      &kp LS(N2)    &kp LS(N3)    &kp LS(N4)     &kp LS(N5)       &kp LS(N6)      &kp LS(N7)      &kp LS(N8)      &kp LS(N9)   &kp LS(N0)    &kp LS(MINUS)
-&trans      &kp RA(Q)     &kp RA(E)     &kp RA(N7)    &kp RA(N8)     &kp RA(N9)       &kp RA(N0)      &kp RA(MINUS)   &kp RA(NUBS)    &kp NUHS     &kp LS(NUHS)  &kp RA(RBKT)
-&trans      &kp NUBS      &kp LS(NUBS)  &kp RBKT      &kp LS(RBKT)   &kp FSLH         &kp LS(FSLH)    &kp LS(COMMA)   &kp LS(DOT)     &none        &none         &trans
-                                        &trans        &trans         &trans           &trans          &trans          &trans
-            >;
-            /*
-             * Row 1: ! " § $ % & / ( ) = ?
-             * Row 2: @ € { [ ] } \ | # ' ~
-             * Row 3: < > + * -  _ ; :
-             */
-        };
+&trans      &kp EXCL      &kp LS(MINUS)  &kp RA(N7)   &kp RA(N0)   &kp RA(NUBS)      &td_sl      &kp DE_N7  &kp DE_N8  &kp DE_N9  &kp LS(RBKT)  &kp F12
+&trans      &kp NUHS      &td_dollar     &kp LS(N8)   &kp LS(N9)   &td_grave         &td_apos    &kp DE_N4  &kp DE_N5  &kp DE_N6  &kp RBKT      &td_caret
+&trans      &kp LS(N5)    &td_lt         &kp RA(N8)   &kp RA(N9)   &kp LS(N6)        &td_eq      &kp DE_N1  &kp DE_N2  &kp DE_N3  &td_dot       &to BASE
+                                         &kp LGUI     &kp SPACE    &trans           &RET    &kp BPSC     &mo ADJUST
 
         adjust_layer {
-            label = "ADJUST";
+            label = "SysFunc";
             bindings = <
 &bt BT_CLR  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4      &studio_unlock  &none  &none  &none  &none  &bootloader
 &none       &none         &none         &none         &none         &none             &none           &none  &none  &none  &none  &none
