@@ -4,11 +4,16 @@ manifest:
   remotes:
     - name: zmkfirmware
       url-base: https://github.com/zmkfirmware
-    # Additional modules containing boards/shields/custom code can be listed here as well
-    # See https://docs.zephyrproject.org/3.2.0/develop/west/manifest.html#projects
+    # 1. Added the remote base for the display module
+    - name: interphased
+      url-base: https://github.com
   projects:
     - name: zmk
       remote: zmkfirmware
       import: app/west.yml
+    # 2. Added the display driver project mapping
+    - name: zmk-nice-view-behavior
+      remote: interphased
+      revision: main
   self:
     path: config
