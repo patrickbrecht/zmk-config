@@ -1,17 +1,14 @@
 manifest:
-  defaults:
-    revision: v0.3
   remotes:
     - name: zmkfirmware
       url-base: https://github.com/zmkfirmware
-    - name: niceview_repo
-      url-base: https://github.com
   projects:
     - name: zmk
       remote: zmkfirmware
       import: app/west.yml
     - name: zmk-nice-view-behavior
-      remote: niceview_repo
+      remote: zmkfirmware
+      repo-path: Interphased/zmk-nice-view-behavior
       revision: main
   self:
     path: config
