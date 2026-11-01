@@ -24,3 +24,14 @@ include:
     cmake-args: -DCONFIG_ZMK_STUDIO=y -DSNIPPET=studio-rpc-usb-uart
   - board: nice_nano_v2
     shield: corne_right
+jobs:
+  build:
+    steps:
+      - name: Build ZMK Firmware
+        uses: zmkfirmware/zmk-action@v3
+        with:
+          # Look for the "with:" configuration parameters block
+          # Keep your existing parameters like board and shield declarations here
+
+          # Paste this rule directly beneath your baseline build settings:
+          extra_modules: -DZMK_EXTRA_MODULES="Interphased/zmk-nice-view-behavior"
