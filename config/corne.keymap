@@ -160,7 +160,7 @@
         base_layer {
             label = "BASE";
             bindings = <
-&kp ESC     &td_q     &kp DE_W  &td_eur   &kp DE_R  &kp DE_T      &td_sl  &kp DE_Z     &td_u      &kp DE_I    &td_o       &kp DE_P
+&lt RAISE TAB     &td_q     &kp DE_W  &td_eur   &kp DE_R  &kp DE_T      &td_sl  &kp DE_Z     &td_u      &kp DE_I    &td_o       &kp DE_P
 &kp LSHFT   &td_a     &td_sz    &kp DE_D  &kp DE_F  &kp DE_G      &td_cm  &kp DE_H  &kp DE_J      &kp DE_K    &kp L       &kp ESC
 &kp LCTRL   &kp DE_Y  &kp DE_X  &kp DE_C  &kp DE_V  &kp DE_B      &td_apos  &kp DE_N  &kp DE_M    &td_hyph    &td_dot     &mo RAISE
                               &kp LGUI  &kp SPACE  &mo LOWER      &kp RET   &kp BSPC  &mo ADJUST
