@@ -145,6 +145,13 @@
             bindings = <&kp LS(EQUAL)>, <&kp EQUAL>;        /* `  ´  (dead keys) */
         };
 
+        td_pm: tap_dance_pm {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <150>;
+            bindings = <&kp RBKT>, <&kp FSLH>;        /* `  ´  (dead keys) */
+        };
+
     };
 
     keymap {
@@ -155,7 +162,7 @@
             bindings = <
 &kp ESC     &td_q     &kp DE_W  &td_eur   &kp DE_R  &kp DE_T      &td_sl  &td_u     &kp DE_I      &td_o       &kp DE_P    &kp ESC
 &kp LCTRL   &td_a     &td_sz    &kp DE_D  &kp DE_F  &kp DE_G      &td_cm  &kp DE_H  &kp DE_J      &kp DE_K    &kp L       &kp ESC
-&kp LSHFT   &kp DE_Y  &kp DE_X  &kp DE_C  &kp DE_V  &kp DE_B      &td_apos  &kp DE_N  &kp DE_M    &td_hyph    &td_dot  &to RAISE
+&kp LSHFT   &kp DE_Y  &kp DE_X  &kp DE_C  &kp DE_V  &kp DE_B      &td_apos  &kp DE_N  &kp DE_M    &td_hyph    &td_dot     &mo RAISE
                               &kp LGUI  &kp SPACE  &mo LOWER      &kp RET   &kp BSPC  &mo ADJUST
             >;
         };
@@ -174,7 +181,7 @@
             label = "SymNum";
             bindings = <
 &trans      &kp EXCL      &kp LS(MINUS)  &kp RA(N7)   &kp RA(N0)   &kp RA(NUBS)      &td_sl      &kp DE_N7  &kp DE_N8  &kp DE_N9  &kp LS(RBKT)  &kp F12
-&trans      &kp NUHS      &td_dollar     &kp LS(N8)   &kp LS(N9)   &td_grave         &td_apos    &kp DE_N4  &kp DE_N5  &kp DE_N6  &kp RBKT      &td_caret
+&trans      &kp NUHS      &td_dollar     &kp LS(N8)   &kp LS(N9)   &td_grave         &td_apos    &kp DE_N4  &kp DE_N5  &kp DE_N6  &td_pm      &td_caret
 &trans      &kp LS(N5)    &td_lt         &kp RA(N8)   &kp RA(N9)   &kp LS(N6)        &td_eq      &kp DE_N1  &kp DE_N2  &kp DE_N3  &td_dot       &to BASE
                                          &kp LGUI     &kp SPACE    &trans           &kp RET    &kp BSPC     &mo ADJUST
             >;
