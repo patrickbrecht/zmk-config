@@ -18,7 +18,8 @@
 #define BASE   0
 #define LOWER  1
 #define RAISE  2
-#define ADJUST 3
+#define GAMING 3
+#define ADJUST 4
 
 / {
     /* Hold LOWER + RAISE together to get ADJUST (Bluetooth, Studio, bootloader) */
@@ -175,7 +176,6 @@
 
         lt_gaming: lt_gaming {
             compatible = "zmk,behavior-hold-tap";
-            label = "LT_GAMING";
             bindings = <&tog>, <&kp>;
 
             #binding-cells = <2>;
@@ -219,6 +219,7 @@
         };
 
         Gaming {
+            label = "GAMING";
             bindings = <
 &kp TAB    &kp Q  &kp W  &kp E     &kp R      &kp T    &kp DE_MINUS       &kp Y     &kp U     &kp I         &kp O          &kp P
 &kp LSHFT  &kp A  &kp S  &kp D     &kp F      &kp G    &kp DE_SEMI        &kp H     &kp J     &kp K         &kp L          &kp DE_PLUS
