@@ -11,8 +11,8 @@
  */
 
 #include <behaviors.dtsi>
-#include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/zmk/keys.h>
 #include "keys_de.h"
 
 #define BASE   0
@@ -22,16 +22,19 @@
 
 / {
     /* Hold LOWER + RAISE together to get ADJUST (Bluetooth, Studio, bootloader) */
+
     conditional_layers {
         compatible = "zmk,conditional-layers";
+
         tri_layer {
-            if-layers = <LOWER RAISE>;
-            then-layer = <ADJUST>;
+            if-layers = <1 2>;
+            then-layer = <4>;
         };
     };
 
     behaviors {
         /* Tap = letter, double tap = umlaut */
+
         td_a: tap_dance_a {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
@@ -47,6 +50,7 @@
         };
 
         /* Double tap q = @ (AltGr + Q on a German layout) */
+
         td_q: tap_dance_q {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
@@ -114,94 +118,122 @@
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
             tapping-term-ms = <150>;
-            bindings = <&kp LS(N0)>, <&kp RA(RBKT)>;        /* =  ~  */
+            bindings = <&kp LS(N0)>, <&kp RA(RBKT)>;
+        /* =  ~  */
         };
 
         td_dollar: tap_dance_dollar {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
             tapping-term-ms = <150>;
-            bindings = <&kp LS(N4)>, <&kp LS(N3)>;          /* $  §  */
+            bindings = <&kp LS(N4)>, <&kp LS(N3)>;
+          /* $  §  */
         };
 
         td_lt: tap_dance_lt {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
             tapping-term-ms = <150>;
-            bindings = <&kp NUBS>, <&kp LS(NUBS)>;          /* <  >  */
+            bindings = <&kp NUBS>, <&kp LS(NUBS)>;
+          /* <  >  */
         };
 
         td_caret: tap_dance_caret {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
             tapping-term-ms = <150>;
-            bindings = <&kp GRAVE>, <&kp RA(RBKT)>;         /* ^  ~  (^ is a dead key) */
+            bindings = <&kp GRAVE>, <&kp RA(RBKT)>;
+         /* ^  ~  (^ is a dead key) */
         };
 
         td_grave: tap_dance_grave {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
             tapping-term-ms = <150>;
-            bindings = <&kp LS(EQUAL)>, <&kp EQUAL>;        /* `  ´  (dead keys) */
+            bindings = <&kp LS(EQUAL)>, <&kp EQUAL>;
+        /* `  ´  (dead keys) */
         };
 
         td_pm: tap_dance_pm {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
             tapping-term-ms = <150>;
-            bindings = <&kp RBKT>, <&kp FSLH>;        /* `  ´  (dead keys) */
+            bindings = <&kp RBKT>, <&kp FSLH>;
+        /* `  ´  (dead keys) */
         };
 
-        lt_fast: lt_fast {
-           compatible = "zmk,behavior-hold-tap";
-           #binding-cells = <2>;
-           flavor = "balanced";
-           tapping-term-ms = <200>;
-           quick-tap-ms = <150>;
-           bindings = <&mo>, <&kp>;
+        lt_SymNum: lt_SymNum {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "balanced";
+            tapping-term-ms = <200>;
+            quick-tap-ms = <150>;
+            bindings = <&mo>, <&kp>;
+
+            label = "LT_SYMNUM";
+        };
+
+        lt_gaming: lt_gaming {
+            compatible = "zmk,behavior-hold-tap";
+            label = "LT_GAMING";
+            bindings = <&tog>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            quick-tap-ms = <150>;
+            flavor = "tap-preferred";
         };
     };
 
     keymap {
         compatible = "zmk,keymap";
 
-        base_layer {
-            label = "BASE";
+        LIN-WIN {
+            label = "LIN-WIN";
             bindings = <
-&lt RAISE TAB     &td_q     &kp DE_W  &td_eur   &kp DE_R  &kp DE_T      &td_sl  &kp DE_Z     &td_u      &kp DE_I    &td_o       &kp DE_P
-&kp LSHFT   &td_a     &td_sz    &kp DE_D  &kp DE_F  &kp DE_G      &td_cm  &kp DE_H  &kp DE_J      &kp DE_K    &kp L       &kp ESC
-&kp LCTRL   &kp DE_Y  &kp DE_X  &kp DE_C  &kp DE_V  &kp DE_B      &td_apos  &kp DE_N  &kp DE_M    &td_hyph    &td_dot     &mo RAISE
-                              &kp LGUI  &kp SPACE  &mo LOWER      &kp RET   &kp BSPC  &mo ADJUST
+&lt 2 TAB  &td_q     &kp DE_W  &td_eur   &kp DE_R   &kp DE_T          &td_sl    &kp DE_Z  &td_u     &kp DE_I  &td_o    &kp DE_P
+&kp LSHFT  &td_a     &td_sz    &kp DE_D  &kp DE_F   &lt_gaming 3 G    &td_cm    &kp DE_H  &kp DE_J  &kp DE_K  &kp L    &kp ESC
+&kp LCTRL  &kp DE_Y  &kp DE_X  &kp DE_C  &kp DE_V   &kp DE_B          &td_apos  &kp DE_N  &kp DE_M  &td_hyph  &td_dot  &mo 2
+                               &kp LGUI  &kp SPACE  &mo 1             &kp RET   &kp BSPC  &mo 4
             >;
         };
 
-        lower_layer {
+        BrdSys {
             label = "BrdSys";
             bindings = <
-&trans      &kp DE_N1  &kp DE_N2  &kp DE_N3  &kp DE_N4  &kp DE_N5      &kp DE_N6     &kp DE_N7  &kp DE_N8  &kp DE_N9  &kp DE_N0  &kp DEL
-&trans      &none      &kp C_VOL_DN    &kp C_VOL_UP    &kp C_MUTE      &none         &kp LEFT   &kp LEFT   &kp DOWN   &kp UP     &kp RIGHT    &none
-&trans      &none      &kp C_PREV      &kp C_NEXT      &kp C_STOP      &kp C_PLAY    &td_cm  &kp HOME   &kp PG_DN  &kp PG_UP  &kp END      &trans
-                                &kp LGUI     &kp SPACE     &trans      &kp RET    &kp BSPC     &mo ADJUST
+&trans  &kp DE_N1  &kp DE_N2     &kp DE_N3     &kp DE_N4   &kp DE_N5     &kp DE_N6  &kp DE_N7  &kp DE_N8  &kp DE_N9  &kp DE_N0  &kp DEL
+&trans  &none      &kp C_VOL_DN  &kp C_VOL_UP  &kp C_MUTE  &none         &kp LEFT   &kp LEFT   &kp DOWN   &kp UP     &kp RIGHT  &none
+&trans  &none      &kp C_PREV    &kp C_NEXT    &kp C_STOP  &kp C_PLAY    &td_cm     &kp HOME   &kp PG_DN  &kp PG_UP  &kp END    &trans
+                                 &kp LGUI      &kp SPACE   &trans        &kp RET    &kp BSPC   &mo 4
             >;
         };
 
-        raise_layer {
+        SymNum {
             label = "SymNum";
             bindings = <
-&trans      &kp EXCL      &kp LS(MINUS)  &kp RA(N7)   &kp RA(N0)   &kp RA(NUBS)      &td_sl      &kp DE_N7  &kp DE_N8  &kp DE_N9  &kp LS(RBKT)  &kp F12
-&trans      &kp NUHS      &td_dollar     &kp LS(N8)   &kp LS(N9)   &td_grave         &td_apos    &kp DE_N4  &kp DE_N5  &kp DE_N6  &td_pm      &td_caret
-&trans      &kp LS(N5)    &td_lt         &kp RA(N8)   &kp RA(N9)   &kp LS(N6)        &td_eq      &kp DE_N1  &kp DE_N2  &kp DE_N3  &td_dot       &to BASE
-                                         &kp LGUI     &kp SPACE    &trans           &kp RET    &kp BSPC     &mo ADJUST
+&trans  &kp EXCL    &kp LS(MINUS)  &kp RA(N7)  &kp RA(N0)  &kp RA(NUBS)    &td_sl    &kp DE_N7  &kp DE_N8  &kp DE_N9  &kp LS(RBKT)  &kp F12
+&trans  &kp NUHS    &td_dollar     &kp LS(N8)  &kp LS(N9)  &td_grave       &td_apos  &kp DE_N4  &kp DE_N5  &kp DE_N6  &td_pm        &td_caret
+&trans  &kp LS(N5)  &td_lt         &kp RA(N8)  &kp RA(N9)  &kp LS(N6)      &td_eq    &kp DE_N1  &kp DE_N2  &kp DE_N3  &td_dot       &to 0
+                                   &kp LGUI    &kp SPACE   &trans          &kp RET   &kp BSPC   &mo 4
             >;
         };
 
-        adjust_layer {
+        Gaming {
+            bindings = <
+&kp TAB    &kp Q  &kp W  &kp E     &kp R      &kp T    &kp DE_MINUS       &kp Y     &kp U     &kp I         &kp O          &kp P
+&kp LSHFT  &kp A  &kp S  &kp D     &kp F      &kp G    &kp DE_SEMI        &kp H     &kp J     &kp K         &kp L          &kp DE_PLUS
+&kp LCTRL  &kp Z  &kp X  &kp C     &kp V      &kp B    &kp DE_APOSTROPHE  &kp N     &kp M     &kp DE_COMMA  &kp DE_PERIOD  &tog 0
+                         &kp LGUI  &kp SPACE  &mo 2    &kp ENTER          &kp BSPC  &kp RALT
+            >;
+        };
+
+        SysFunc {
             label = "SysFunc";
             bindings = <
-&bt BT_CLR  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4      &studio_unlock  &none  &none  &none  &none  &bootloader
-&none       &none         &none         &none         &none         &none             &none           &none  &none  &none  &none  &none
-&none       &none         &none         &none         &none         &none             &none           &none  &none  &none  &none  &none
-                                        &none         &none         &none             &none           &none  &none
+&bt BT_CLR  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4    &studio_unlock  &none  &none  &none  &none  &bootloader
+&none       &none         &none         &none         &none         &none           &none           &none  &none  &none  &none  &none
+&none       &none         &none         &none         &none         &none           &none           &none  &none  &none  &none  &none
+                                        &none         &none         &none           &none           &none  &none
             >;
         };
     };
